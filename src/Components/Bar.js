@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Paper from "@mui/material/Paper";
 import {
   Chart,
@@ -11,16 +11,22 @@ import { Animation } from "@devexpress/dx-react-chart";
 import { statistics } from "../Data/BigCardList";
 
 const Bar = () => {
-  const [data, setData] = useState(statistics);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    setData(statistics);
+  }, []);
   return (
     <>
       <Paper>
-        <Chart data={data}>
-          <ArgumentAxis />
-          <ValueAxis max={5} />
-          <BarSeries valueField="value" argumentField="id" />
-          <Animation />
-        </Chart>
+        {data && (
+          <Chart data={data}>
+            <ArgumentAxis />
+            <ValueAxis max={5} />
+            <BarSeries valueField="value" argumentField="id" />
+            <Animation />
+          </Chart>
+        )}
       </Paper>
     </>
   );

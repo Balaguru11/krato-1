@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardContent,
-  CardAction,
-  CircularProgress,
-  Typography,
-  Grid,
-  Box,
-  Fab,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Card, CardContent, Typography, Grid, Fab } from "@mui/material";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
 import { bigData } from "../Data/BigCardList";
-const BigCard = (props) => {
-  const [bd, setBd] = useState(bigData);
+const BigCard = () => {
+  const [bd, setBd] = useState(null);
+
+  useEffect(() => {
+    setBd(bigData);
+  }, []);
   return (
     <>
       <Grid

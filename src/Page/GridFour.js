@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Grid,
   Typography,
-  TextField,
   Box,
   Paper,
   IconButton,
@@ -17,7 +16,11 @@ import BigCard from "../Components/BigCard";
 import Filter from "../Components/Filter";
 
 const GridFour = () => {
-  const [spov, setSPOV] = useState(fourData);
+  const [spov, setSPOV] = useState(null);
+
+  useEffect(() => {
+    setSPOV(fourData);
+  }, []);
 
   return (
     <>

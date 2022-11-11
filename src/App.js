@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Final from "./Page/GridFour";
 import Menu from "./Components/Menu";

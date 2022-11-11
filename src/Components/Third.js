@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   List,
@@ -12,7 +12,11 @@ import { salesRevenue } from "../Data/BigCardList";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 import Bar from "../Components/Bar";
 const Third = () => {
-  const [sales, setSales] = useState(salesRevenue);
+  const [sales, setSales] = useState(null);
+
+  useEffect(() => {
+    setSales(salesRevenue);
+  }, []);
   return (
     <>
       <Box sx={{ p: 3, mt: 5, backgroundColor: "#262626", borderRadius: 10 }}>

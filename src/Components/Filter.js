@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Paper, IconButton, InputBase, TextField } from "@mui/material";
+import { Box, Paper, IconButton, TextField } from "@mui/material";
 import TuneIcon from "@mui/icons-material/Tune";
 
 const Filter = () => {

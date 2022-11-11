@@ -1,22 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import menuList from "../Data/MenuList";
 
-import {
-  Paper,
-  MenuList,
-  MenuItem,
-  ListItemIcon,
-  ListItemText,
-  Box,
-} from "@mui/material";
+import { Paper, MenuList, MenuItem, ListItemIcon, Box } from "@mui/material";
 
 import Check from "@mui/icons-material/Check";
 
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 
 const Menu = () => {
-  const [arr, setArr] = useState(menuList);
+  const [arr, setArr] = useState(null);
 
+  useEffect(() => {
+    setArr(menuList);
+  }, []);
   return (
     <>
       <AnalyticsIcon
