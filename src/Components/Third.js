@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Box,
   List,
@@ -8,24 +8,18 @@ import {
   ListItemText,
   Avatar,
 } from "@mui/material";
-import { salesRevenue } from "../Data/BigCardList";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
-import Bar from "../Components/Bar";
-const Third = () => {
-  const [sales, setSales] = useState(null);
-
-  useEffect(() => {
-    setSales(salesRevenue);
-  }, []);
+import BarStatis from "../Components/BarStatis";
+const Third = ({ sales, barData }) => {
   return (
     <>
       <Box sx={{ p: 3, mt: 5, backgroundColor: "#262626", borderRadius: 10 }}>
-        <Typography variant="h5" component="text" sx={{ color: "white" }}>
+        <Typography variant="h5" component="h5" sx={{ color: "white" }}>
           Sales Revenue
         </Typography>
         <List>
           {sales?.map((sale) => (
-            <ListItem sx={{ color: "white", pb: 2 }}>
+            <ListItem key={sale.id} sx={{ color: "white", pb: 2 }}>
               <ListItemAvatar>
                 <Avatar sx={{ backgroundColor: "white" }}>
                   <BeachAccessIcon sx={{ color: "black" }} />
@@ -36,7 +30,7 @@ const Third = () => {
                 secondary={
                   <Typography
                     variant="caption"
-                    component="caption"
+                    component="p"
                     sx={{ color: "white" }}
                   >
                     {sale.name}
@@ -47,10 +41,10 @@ const Third = () => {
           ))}
         </List>
         <Box height={30} />
-        <Typography variant="h5" component="text" sx={{ color: "white" }}>
+        <Typography variant="h5" component="h5" sx={{ color: "white" }}>
           Statistics
         </Typography>
-        <Bar />
+        <BarStatis barData={barData} />
       </Box>
     </>
   );

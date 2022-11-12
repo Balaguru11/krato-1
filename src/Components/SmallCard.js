@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
 
-const SmalCard = (props) => {
+const SmallCard = (props) => {
   return (
     <>
       <Card
@@ -36,15 +36,14 @@ const SmalCard = (props) => {
               </Typography>
             </Grid>
             <Grid item xs={6}>
-              {/* <CircularProgress variant="determinate" value={55} /> */}
               <Box sx={{ position: "relative", display: "inline-flex" }}>
                 <SouthEastIcon
                   sx={{
                     m: 1,
                     color: `${props.item.iconCol}`,
                     position: "relative",
-                    top: -25,
-                    right: -120,
+                    top: -20,
+                    right: -115,
                   }}
                 />
                 <CircularProgress
@@ -82,4 +81,4 @@ const SmalCard = (props) => {
   );
 };
 
-export default SmalCard;
+export default SmallCard;

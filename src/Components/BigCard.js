@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardContent, Typography, Grid, Fab } from "@mui/material";
+import React from "react";
+import { Card, CardContent, Typography, Grid, Fab, Box } from "@mui/material";
 import SouthEastIcon from "@mui/icons-material/SouthEast";
-import { bigData } from "../Data/BigCardList";
-const BigCard = () => {
-  const [bd, setBd] = useState(null);
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
-  useEffect(() => {
-    setBd(bigData);
-  }, []);
+const BigCard = ({ bd }) => {
+  const theme = useTheme();
+
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <>
       <Grid
@@ -19,7 +20,7 @@ const BigCard = () => {
         }}
       >
         {bd?.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={4}>
+          <Grid item xs={12} sm={6} md={4} lg={4} key={item.id}>
             <Card
               key={item.id}
               sx={{
@@ -30,38 +31,52 @@ const BigCard = () => {
               }}
             >
               <CardContent>
-                <Fab
-                  size="small"
-                  aria-label="icon"
+                <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "flex-start",
-                    mb: 2,
+                    maxWidth: "150px",
                   }}
                 >
-                  <SouthEastIcon />
-                </Fab>
-                <Typography
-                  variant="caption"
-                  component="div"
-                  sx={{ textAlign: "left", pb: 1 }}
-                >
-                  {item.name}
-                </Typography>
-                <Typography
-                  variant="h4"
-                  component="h4"
-                  sx={{ textAlign: "left" }}
-                >
-                  {item.value}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  component="div"
-                  sx={{ textAlign: "left" }}
-                >
-                  {item.desc}
-                </Typography>
+                  <Grid container spacing={1}>
+                    <Grid item xs={matches ? 12 : 6}>
+                      <Fab
+                        size="small"
+                        aria-label="icon"
+                        sx={{
+                          display: "flex",
+                          flexDirection: "flex-start",
+                          mb: 2,
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <SouthEastIcon />
+                      </Fab>
+                    </Grid>
+                    <Grid item xs={matches ? 12 : 6}>
+                      <Typography
+                        variant="caption"
+                        component="div"
+                        sx={{ textAlign: "left", pb: 1 }}
+                      >
+                        {item.name}
+                      </Typography>
+                      <Typography
+                        variant="h4"
+                        component="h4"
+                        sx={{ textAlign: "left" }}
+                      >
+                        {item.value}
+                      </Typography>
+                      <Typography
+                        variant="caption"
+                        component="div"
+                        sx={{ textAlign: "left" }}
+                      >
+                        {item.desc}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Box>
               </CardContent>
             </Card>
           </Grid>
